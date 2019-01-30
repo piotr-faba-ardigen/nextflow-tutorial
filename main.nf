@@ -1,5 +1,4 @@
 params.reads = 
-params.outdir = 'results'
 
 /*
  * Step 1. Print each record
