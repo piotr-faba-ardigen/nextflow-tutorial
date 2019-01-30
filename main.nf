@@ -12,7 +12,7 @@ process printSequences {
     
  
     """
-    
+    awk '{if(NR%4==2) print \$0}' input.fq
     """
  
 }
