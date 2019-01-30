@@ -2,8 +2,6 @@ TAG=rnatoy
 VERSION=latest
 REGISTRY=nextflow
 
-all: build push
-
 build:
 	docker build -t $(TAG) -f Dockerfile .
 	docker tag $(TAG) $(REGISTRY)/$(TAG):$(VERSION)
