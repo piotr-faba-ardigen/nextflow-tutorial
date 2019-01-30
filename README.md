@@ -34,3 +34,13 @@ scripting and reproducibility capabilities.
 
     The file is started for you.
 
+# Task 2
+
+1. Start building RnaSeq pipeline by modifying `main.fa` to have 1 stage called `buildIndex`.
+    For the provided genome: `/data/ggal/ggal_1_48850000_49020000.Ggal71.500bpflank.fa`, build index with the following bowtie command:
+
+    ```
+        bowtie2-build ${genome} genome.index
+    ```
+
+2. The result should be published in the `results` folder. See reference for [publishDir](https://www.nextflow.io/docs/latest/process.html?highlight=publishdir#publishdir) directive.
