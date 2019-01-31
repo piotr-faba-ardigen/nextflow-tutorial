@@ -23,11 +23,11 @@ scripting and reproducibility capabilities.
 
 # Start
 
-Checkout git tag `task1-tag` to set your repository in the starting point.
+Checkout git tag `task1-checkpoint` to set your repository in the starting point.
 
 You can use:
 
-`git checkout -b my-solution task1-tag`
+`git checkout -b my-solution task1-checkpoint`
 
 This will create branch `my-solution` for you on which you can commit your steps.
 
@@ -59,7 +59,7 @@ GGATGGCCTCAGTTTCGCGGCAGGGAAGATTCAGGTTGGGTGTTAGGAAAAGTTTCTCTGAAAGGGATGGTCAGGCACTG
 
 ```
 
-If you have trouble achieving this effect, check the solution by checking out, the starting point for task 2. Checkout `task2-tag` and execute `make run`. If you achieved this, you can just progress to the next task.
+If you have trouble achieving this effect, check the solution by checking out, the starting point for task 2. Checkout `task2-checkpoint` and execute `make run`. If you achieved this, you can just progress to the next task.
 
 # Task 2
 
@@ -83,7 +83,7 @@ genome.index.rev.1.bt2
 genome.index.rev.2.bt2
 ```
 
-If you have trouble achieving this effect, check the solution by checking out, the starting point for the next task. Checkout `task3-tag` and execute `make run`. If you achieved this, you can just progress to the next task.
+If you have trouble achieving this effect, check the solution by checking out, the starting point for the next task. Checkout `task3-checkpoint` and execute `make run`. If you achieved this, you can just progress to the next task.
 
 # Task 3
 
@@ -110,7 +110,7 @@ ggal_gut.bam
 ggal_liver.bam
 ```
 
-If you have trouble achieving this effect, check the solution by checking out, the starting point for the next task. Checkout `task4-tag` and execute `make run`. If you achieved this, you can just progress to the next task.
+If you have trouble achieving this effect, check the solution by checking out, the starting point for the next task. Checkout `task4-checkpoint` and execute `make run`. If you achieved this, you can just progress to the next task.
 
 # Task 4
 
@@ -137,7 +137,7 @@ transcript_ggal_gut.gtf
 transcript_ggal_liver.gtf
 ```
 
-If you have trouble achieving this effect, check the solution by checking out, the starting point for the next task. Checkout `task5-tag` and execute `make run`. If you achieved this, you can just progress to the next task.
+If you have trouble achieving this effect, check the solution by checking out, the starting point for the next task. Checkout `task5-checkpoint` and execute `make run`. If you achieved this, you can just progress to the next task.
 
 # Task 5*
 
@@ -152,4 +152,4 @@ This task is additional for eager participants. It's all about refining your out
 4. Limit the memory on mapping to 2 MB on `mapping` process with [process selector](https://www.nextflow.io/docs/latest/config.html#process-selectors), and define retries with higher memory so the pipeline passes by using [dynamic computing resources](https://www.nextflow.io/docs/latest/process.html?highlight=memory#dynamic-computing-resources).
 
 
-Partial solution can be found by checking out the `final-solution-tag` tag.
+Partial solution can be found by checking out the `final-solution-checkpoint` tag.
