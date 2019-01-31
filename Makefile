@@ -9,3 +9,6 @@ build:
 pull:
 	docker pull $(REGISTRY)/$(TAG):1.3
 	docker tag $(REGISTRY)/$(TAG):1.3 $(REGISTRY)/$(TAG):$(VERSION)
+
+run:
+	nextflow run main.nf
