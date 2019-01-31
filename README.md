@@ -21,6 +21,16 @@ scripting and reproducibility capabilities.
 
     `make build`
 
+# Start
+
+Checkout git tag `task1-checkpoint` to set your repository in the starting point.
+
+You can use:
+
+`git checkout -b my-solution task1-checkpoint`
+
+This will create branch `my-solution` for you on which you can commit your steps.
+
 # Task 1
 
 1. Create a `nextflow.config` basic based on [documentation](https://www.nextflow.io/docs/latest/config.html#configuration-file) that includes:
@@ -34,6 +44,23 @@ scripting and reproducibility capabilities.
 
     The file is started for you.
 
+3. Use `make run` to execute the pipeline.
+
+In result after running the pipeline, in terminal you should see loads of DNA lines similar to those below.
+
+```
+...
+GGCGTAGCCACCAACTGCTTGACGACTTCATTTCCAAAAAGCAGGATTTAATGAGTCTGGAGCACAAGTCTTATGAGGAGCAGCTGAGGGAACTGGGATTGCTTA
+GGTTGGCCTCTTTTCCCACATAACTAGCAGTAGGACTAGAGGGGATGGCCTCAGTTTCGCGGCAGGGAAGATTCAGGTTGGGTGTTAGGAAAAGTTTCTCTGAAA
+GAGGAGGGTCAGGCACTGGAATGGGCTGCCCAGGGTGGTGGAGTCACCATCCCTGTTGGGGATCAAGAAACATTTCACTGTGGTACTGAGGGATGTGGTTTAGTG
+GGGGAGAGTCGGGTTGGGTGTTAGGAAAAGTTTCTCTGAAAGGGATGGTCAGGCACTGGAATGGGCTGCCCAGGGTGGTGGAGTCACCATCCCTGTTGGGGATCA
+GGATGGCCTCAGTTTCGCGGCAGGGAAGATTCAGGTTGGGTGTTAGGAAAAGTTTCTCTGAAAGGGATGGTCAGGCACTGGAATGGGCTGCCCAGGGTGGTGGAG
+...
+
+```
+
+If you have trouble achieving this effect, check the solution by checking out, the starting point for task 2. Checkout `task2-checkpoint` and execute `make run`. If you achieved this, you can just progress to the next task.
+
 # Task 2
 
 1. Start building RnaSeq pipeline by modifying `main.fa` to have 1 stage called `buildIndex`.
@@ -43,7 +70,20 @@ scripting and reproducibility capabilities.
         bowtie2-build ${genome} genome.index
     ```
 
-2. The result should be published in the `results` folder. See reference for [publishDir](https://www.nextflow.io/docs/latest/process.html?highlight=publishdir#publishdir) directive.
+2. The result should be published in the `results` folder. See reference for [publishDir](https://www.nextflow.io/docs/latest/process.html?highlight=publishdir#publishdir) directive. 
+
+3. Run the pipeline. You should see 6 files appear in the `results` folder:
+
+```
+genome.index.1.bt2  
+genome.index.2.bt2  
+genome.index.3.bt2  
+genome.index.4.bt2  
+genome.index.rev.1.bt2  
+genome.index.rev.2.bt2
+```
+
+If you have trouble achieving this effect, check the solution by checking out, the starting point for the next task. Checkout `task3-checkpoint` and execute `make run`. If you achieved this, you can just progress to the next task.
 
 # Task 3
 
@@ -59,9 +99,18 @@ In this task you add another stage to your pipeline called `mapping`. In result 
 
 4. Add command to be executed: `tophat2 genome.index ${reads}`
 
-5. `tophat2` by default creates results in `tophat_out/`. We are interested in `tophat_out/accepted_hits.bam`. Rename this file by using `pair_id` 
+5. `tophat2` by default creates results in `tophat_out/`. We are interested in `tophat_out/accepted_hits.bam`. Rename this file by using `pair_id` to `$pair_id.bam`.
 
 6. The result should be published in the `results` folder. 
+
+7. Run the pipeline. You should see 2 files appear in the `results/tophat_oout` folder:
+
+```
+ggal_gut.bam
+ggal_liver.bam
+```
+
+If you have trouble achieving this effect, check the solution by checking out, the starting point for the next task. Checkout `task4-checkpoint` and execute `make run`. If you achieved this, you can just progress to the next task.
 
 # Task 4
 
@@ -80,3 +129,27 @@ In this task you add last stage to your pipeline called `makeTranscript`. In res
 6. Rename the resulting `transcripts.gtf` to `transcript_${pair_id}.gtf`
 
 7. The result should be published in the `results` folder. 
+
+8. Run the pipeline. You should see 2 files appear in the `results` folder:
+
+```
+transcript_ggal_gut.gtf
+transcript_ggal_liver.gtf
+```
+
+If you have trouble achieving this effect, check the solution by checking out, the starting point for the next task. Checkout `task5-checkpoint` and execute `make run`. If you achieved this, you can just progress to the next task.
+
+# Task 5*
+
+This task is additional for eager participants. It's all about refining your outputs and communication to the user.
+
+1. Tag the processes that run in parallel to display which read pair they are processing. See [documentation](https://www.nextflow.io/docs/latest/tracing.html).
+
+2. Display a message at the end of the workflow about whether it was successful or not. See [documentation](https://www.nextflow.io/docs/latest/metadata.html?highlight=workflow#completion-handler).
+
+3. Investigate the report that is being generated on each run. See [Tracing and visualisation](https://www.nextflow.io/docs/latest/tracing.html) section of documentation to see what other reports can be generated. Try generating them.
+
+4. Limit the memory on mapping to 2 MB on `mapping` process with [process selector](https://www.nextflow.io/docs/latest/config.html#process-selectors), and define retries with higher memory so the pipeline passes by using [dynamic computing resources](https://www.nextflow.io/docs/latest/process.html?highlight=memory#dynamic-computing-resources).
+
+
+Partial solution can be found by checking out the `final-solution-checkpoint` tag.
