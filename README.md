@@ -6,46 +6,25 @@ scripting and reproducibility capabilities.
 
 # Prerequisits
 
-## AWS EC2 setup
+## IDE
+Visual Code Studio IDE - this is recommended IDE for working with Nextflow.
 
-1. Enter AWS console under [this link](https://us-east-1.signin.aws.amazon.com/oauth?response_type=code&client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fhomepage&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3Fstate%3DhashArgs%2523%26isauthcode%3Dtrue&forceMobileLayout=0&forceMobileApp=0).
+Additionally install the following extensions:
 
-2. Services > EC2 > Instances > Launch Instance
+1. Nextflow
+2. Docker
 
-    1. My AMIs > `ContraAMI_0.5` (Select)
-    2. Choose an Instance Type: `t2.micro`
-    3. Skip to `"5. Add tags"`, and click `"Add tag"`
+## Docker
 
-            ```
-            Key: Name
-            Value: <your_name>
-            ```
-    4. `"Review and Launch"`
-    5. `"Launch"`
-    6. Select existing key pair: `CONTRA`. Confirm you have access to this key.
-    7. `View instances`. Look at the `Name` column for your name. Your instance will be pending and running in a momment.
+Two docker images will be used in this experiment:
+1. `nextflow/project-base` is container to unify our working environments. It is able to execute nextflow.
+2. `nextflow/rnatoy` is a container that can contains simple rna-seq processing tools. It will be used to perform processing.
 
-3. Mark you instance and click `Connect`. Use `ssh -i "CONTRA.pem" ubuntu@host_name` to log into the instance. Note that Amazon suggests `root` user, change it to `ubuntu`
-
-## Remote server code sync
-
-1. Open the folder with this project in Visual Studio Code.
-
-2. In Visual Studio Code install `sftp` extension.
-
-3. Update 2 fields in `.vscode/sftp.json`: `host` with your ec2 `host_name`  and  `privateKeyPath` with the path to CONTRA.pem
-
-4. Mark all the files, right-click > Upload. All your files should get transferred to the server `~/contra-nextflow/`.
-
-5. Now upon each save a file will be uploading.
-
-## Docker file
-
-Pull the required Docker image as shown below: 
+Pull the required Dockers with: 
 
     `make pull`
 
-or build one
+or build one of them with:
 
     `make build`
 
@@ -181,3 +160,9 @@ This task is additional for eager participants. It's all about refining your out
 
 
 Partial solution can be found by checking out the `final-solution-checkpoint` tag.
+
+## Additional resources
+
+See other tutorials to learn more:
+1. [Lifebit tutorial](https://github.com/lifebit-ai/lbf-hack-tutorial) includes introduction to FlowCraft tool and Deploit web interface for running pipelines.
+2. [NF-Hack 2017](https://github.com/nextflow-io/nf-hack17-tutorial) tutorial written by author of Nextlow, Paulo Di Tommaso, introduces usage of Singularity containers instead of Docker.
