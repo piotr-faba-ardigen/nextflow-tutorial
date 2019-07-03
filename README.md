@@ -165,4 +165,4 @@ Partial solution can be found by checking out the `final-solution-checkpoint` ta
 
 See other tutorials to learn more:
 1. [Lifebit tutorial](https://github.com/lifebit-ai/lbf-hack-tutorial) includes introduction to FlowCraft tool and Deploit web interface for running pipelines.
-2. [NF-Hack 2017](https://github.com/nextflow-io/nf-hack17-tutorial) tutorial written by author of Nextlow, Paulo Di Tommaso, introduces usage of Singularity containers instead of Docker.
+2. [NF-Hack 2017](https://github.com/nextflow-io/nf-hack17-tutorial) tutorial written by author of Nextflow, Paolo Di Tommaso, introduces usage of Singularity containers instead of Docker.
