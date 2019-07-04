@@ -47,7 +47,7 @@ This will create branch `my-solution` for you on which you can commit your steps
 
     The file is started for you.
 
-2. Create `main.nf` based on [nextflow basic example](https://www.nextflow.io/example1.html) that takes both [`data/ggal_gut_1.fa`,`data/ggal_gut_2.fa`] and prints each record in standard output in one process.
+2. Create `main.nf` based on [nextflow basic example](https://www.nextflow.io/example1.html) that takes both [`data/ggal/ggal_gut_1.fq`,`data/ggal/ggal_gut_2.fq`] and prints each record in standard output in one process.
 
     The file is started for you.
 
@@ -70,8 +70,8 @@ If you have trouble achieving this effect, check the solution by checking out, t
 
 # Task 2
 
-1. Start building RnaSeq pipeline by modifying `main.fa` to have 1 stage called `buildIndex`.
-    For the provided genome: `/data/ggal/ggal_1_48850000_49020000.Ggal71.500bpflank.fa`, build index with the following bowtie command:
+1. Start building RnaSeq pipeline by modifying `main.nf` to have 1 stage called `buildIndex`.
+    For the provided genome: `data/ggal/ggal_1_48850000_49020000.Ggal71.500bpflank.fa`, build index with the following bowtie command:
 
     ```
         bowtie2-build ${genome} genome.index
