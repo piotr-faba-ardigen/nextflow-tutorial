@@ -18,7 +18,7 @@ run_project_image:
 	-it nextflow/project-base \
 	/bin/bash -c "cd $(PWD) && /bin/bash"
 
-run_all:
+run:
 	docker run \
 	-v $(PWD):$(PWD) \
 	-v /var/run/docker.sock:/var/run/docker.sock \
