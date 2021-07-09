@@ -123,21 +123,19 @@ If you have trouble achieving this effect, check the solution by checking out, t
 
 In this task you add last stage to your pipeline called `makeTranscript`. In result you should have a 3 stage pipeline that takes genome and produces transcripts.
 
-1. Modify `mapping` to not to rename the `tophat_out/accepted_hits.bam` output any more.
+1. Modify `mapping` to construct (`pair_id`, bam_file) tuple and push it to `bam_files` channel. Refer to [set operator](https://www.nextflow.io/docs/latest/operator.html#set).
 
-2. Modify `mapping` to construct (`pair_id`, bam_file) tuple and push it to `bam_files` channel. Refer to [set operator](https://www.nextflow.io/docs/latest/operator.html#set).
+2. Create `makeTranscript` process
 
-3. Create `makeTranscript` process
+3. Construct input to accept `pair_id` and `bam_file` from the `bam_files` in the same way as it was created.
 
-4. Construct input to accept `pair_id` and `bam_file` from the `bam_files` in the same way as it was created.
+4. Run `cufflinks` tool on each `bam_file` without any additional arguments.
 
-5. Run `cufflinks` tool on each `bam_file` without any additional arguments.
+5. Rename the resulting `transcripts.gtf` to `transcript_${pair_id}.gtf`
 
-6. Rename the resulting `transcripts.gtf` to `transcript_${pair_id}.gtf`
+6. The result should be published in the `results` folder. 
 
-7. The result should be published in the `results` folder. 
-
-8. Run the pipeline. You should see 2 files appear in the `results` folder:
+7. Run the pipeline. You should see 2 files appear in the `results` folder:
 
 ```
 transcript_ggal_gut.gtf
@@ -164,5 +162,6 @@ Partial solution can be found by checking out the `final-solution-checkpoint` ta
 ## Additional resources
 
 See other tutorials to learn more:
-1. [Lifebit tutorial](https://github.com/lifebit-ai/lbf-hack-tutorial) includes introduction to FlowCraft tool and Deploit web interface for running pipelines.
-2. [NF-Hack 2017](https://github.com/nextflow-io/nf-hack17-tutorial) tutorial written by author of Nextlow, Paulo Di Tommaso, introduces usage of Singularity containers instead of Docker.
+1. [Nextflow tutorial](https://github.com/seqeralabs/nextflow-tutorial) more up to date tutorial written by author of Nextflow
+2. [Lifebit tutorial](https://github.com/lifebit-ai/lbf-hack-tutorial) includes introduction to FlowCraft tool and Deploit web interface for running pipelines.
+3. [NF-Hack 2017](https://github.com/nextflow-io/nf-hack17-tutorial) tutorial written by author of Nextflow, Paolo Di Tommaso, introduces usage of Singularity containers instead of Docker.
