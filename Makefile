@@ -13,14 +13,14 @@ run_pipeline:
 
 run_project_image:
 	docker run \
-	-v $(PWD):$(PWD) \
+	-v $(CURDIR):$(CURDIR) \
 	-v /var/run/docker.sock:/var/run/docker.sock \
 	-it nextflow/project-base \
-	/bin/bash -c "cd $(PWD) && /bin/bash"
+	/bin/bash -c "cd $(CURDIR) && /bin/bash"
 
-run_all:
+run:
 	docker run \
-	-v $(PWD):$(PWD) \
+	-v $(CURDIR):$(CURDIR) \
 	-v /var/run/docker.sock:/var/run/docker.sock \
 	-it nextflow/project-base \
-	/bin/bash -c "cd $(PWD) && make run_pipeline"
+	/bin/bash -c "cd $(CURDIR) && make run_pipeline"
